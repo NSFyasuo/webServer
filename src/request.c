@@ -36,7 +36,7 @@ int parse_request(const char* request_str, Request* req) {
     req->path[sizeof(req->path) - 1] = '\0';
     req->version[sizeof(req->version) - 1] = '\0';
 
-    return 0; //成功解析
+    return 1; //成功解析
 }
 
 //4.对路径字符串进行url_decode解码
@@ -58,11 +58,3 @@ void url_decode(char* dst, const char* src){
     *dst = '\0'; // 确保以null结尾
 }
 
-int main(){
-    //测试url_decode函数
-    char src[] = "Hello%20World%21+This+is+a+test.";
-    char dst[256];
-    url_decode(dst, src);
-    printf("Decoded URL: %s\n", dst); //输出: Hello World! This is a test.
-    return 0;
-}
